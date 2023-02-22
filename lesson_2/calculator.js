@@ -90,14 +90,21 @@ while (true) {
   prompt('calculateAgain');
   let answer = readline.question();
 
-
+  while (!['y', 's', 'n', 'yes', 'no'].includes(answer)) {
+    prompt('invalidAnswer');
+    answer = readline.question();
+  }
   if (answer === 'y') {
+    continue;
+  } else if (answer === 'yes') {
     continue;
   } else if (answer === 's') {
     continue;
+  } else if (answer === 'si') {
+    continue;
   } else if (answer === 'n') {
     break;
-  } else {
+  } else if (answer === 'no') {
     break;
   }
 }
