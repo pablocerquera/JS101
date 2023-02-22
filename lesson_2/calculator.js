@@ -7,12 +7,12 @@ const MESSAGES = require('./calculator_messages.json');
 const readline = require('readline-sync');
 const LANGUAGE = 'en';
 
-//function to reference my JSON file.
+// function to reference my JSON file.
 function messages(message, lang = 'en') {
   return MESSAGES[lang][message];
 }
 
-function prompt(key, output) { //I needed to dynamiclly be able to change the string output
+function prompt(key, output) { // I needed to dynamiclly be able to change the string output
   let message = messages(key, LANGUAGE);
   if (output !== undefined ) {
     console.log(message.replace('{}', output));
@@ -20,18 +20,14 @@ function prompt(key, output) { //I needed to dynamiclly be able to change the st
     console.log(`=> ${message}`);
   }
 }
-
+// functio to catch invalid numbers
 function invalidNumber(num) {
   return num.trimStart() === '' || Number.isNaN(Number(num));
 }
-
+// function to catch invalid names
 function invalidName(name) {
   return name.trimStart() === '' || name.length <= 2;
 }
-// function invalidAnswer(ans) {
-//   return ans.trimStart().toLowerCase()  !== 'y' || 's' || 'n';
-// }
-
 //start program
 
 
@@ -94,17 +90,13 @@ while (true) {
     prompt('invalidAnswer');
     answer = readline.question();
   }
-  if (answer === 'y') {
+  if (answer === 'y' || answer === 'yes') {
     continue;
-  } else if (answer === 'yes') {
+  } else if (answer === 's' || answer === 'si') {
     continue;
-  } else if (answer === 's') {
-    continue;
-  } else if (answer === 'si') {
-    continue;
-  } else if (answer === 'n') {
-    break;
-  } else if (answer === 'no') {
+  } else if (answer === 'n' || answer === 'no') {
     break;
   }
 }
+
+// end program
