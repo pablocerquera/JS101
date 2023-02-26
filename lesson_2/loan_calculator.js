@@ -9,15 +9,19 @@ const numberCheck = /\d/;
 function prompt(msg) {
   console.log(`=> ${msg}`);
 }
+
 function invalidName(name) {
   return name.trimStart() === '' || name.length <= 2 || numberCheck.test(name);
 }
+
 function invalidLoan(num) {
   return num.trimStart() === '' || Number(num) <= 0 || Number.isNaN(Number(num));
 }
+
 function invalidnInterest(num) {
-  return num.trimStart() === '' || Number(num) < 0 || Number.isNaN(Number(num));
+  return num.trimStart() === '' || Number(num) <= 0 || Number.isNaN(Number(num));
 }
+
 function invalidDuration(dur) {
   return dur.trimStart() === '' || Number(dur) < 0 || Number.isNaN(Number(dur));
 }
@@ -54,7 +58,7 @@ while (true) {
 
 
   // User gives me the duration of the loan.
-  prompt('How many years is the duration of this loan.');
+  prompt('How many years is the duration of this loan. We will prompt for a month entry.');
   let durationYears = readline.question();
 
   while (invalidDuration(durationYears)) {
@@ -92,9 +96,10 @@ while (true) {
   console.log('\n');
   prompt('Would you like another calculation?');
   let answer = readline.question().toLowerCase();
+
   while (!['y', 'n', 'yes', 'no'].includes(answer)) {
     prompt('Please enter yes or no.');
-    answer = readline.question();
+    answer = readline.question().toLowerCase();
   }
   if (answer === 'y' || answer === 'yes') {
     continue;
