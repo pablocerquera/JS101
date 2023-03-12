@@ -50,7 +50,7 @@ function grandChamp() {
   if (playerScore === 2) {
     prompt("You are almost the Champ don't mess up...");
   } else if (playerScore === 3) {
-    prompt("You are the GRAND CHAMPION of a pointless game, CONGRATULATION!!!");
+    prompt("You are the GRAND CHAMPION of a pointless game, CONGRATULATIONS!!!");
     playerScore = 0;
     computerScore = 0;
   } else if (computerScore === 3) {
@@ -72,7 +72,6 @@ while (true) {
     prompt("That's not a valid choice.");
     choice = readline.question().toLowerCase();
   }
-
 
   let randomIndex = Math.floor(Math.random() * VALID_CHOICES.length);
   let computerChoice = VALID_CHOICES[randomIndex];
@@ -97,6 +96,12 @@ while (true) {
     answer = readline.question().toLowerCase();
   }
 
-  if (answer[0] !== 'y') break;
+  if (answer[0] !== 'y') {
+    console.clear();
+    console.log('\n');
+    prompt("Thank you for playing my game.");
+    console.log('\n');
+    break;
+  }
 }
 // PROGRAM ENDS
